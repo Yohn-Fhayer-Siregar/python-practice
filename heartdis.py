@@ -32,13 +32,13 @@ def iris():
             df = pd.DataFrame(data, index = [0])
             return df
         input_df = user_manual()
-    img_iris= Image.open(r'D:\iris.jpg')
+    img_iris= Image.open(r'iris.jpg')
     st.image(img_iris, width = 100)
 
     if st.sidebar.button("Predict"):
         df = input_df
         st.write(df)
-        with open(r"D:\best_model_iris.pkl",'rb') as file:
+        with open(r"best_model_iris.pkl",'rb') as file:
             clf = pickle.load(file)
         prediction = clf.predict(df)
         result = ['Iris-Sentosa' if prediction == 0 else ("Iris-Versicolor" if prediction == 1 else "Iris-Virginica")]
@@ -93,13 +93,13 @@ def heart_disease():
             features = pd.DataFrame(data, index = [0])
             return features
         input_df = user_manual()
-    img_hd= Image.open(r'D:\heart_disease.jpg')
+    img_hd= Image.open(r'heart_disease.jpg')
     st.image(img_hd, width = 100)
 
     if st.sidebar.button("Predict"):
         df = input_df
         st.write(df)
-        with open(r"D:\best_model_rf.pkl",'rb') as file:
+        with open(r"best_model_rf.pkl",'rb') as file:
             loaded_model = pickle.load(file)
         prediction = loaded_model.predict(df)
         result = ['No Heart Disease' if prediction == 0 else "Yes Heart Disease"]
